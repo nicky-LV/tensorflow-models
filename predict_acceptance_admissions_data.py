@@ -45,10 +45,11 @@ train_features, test_features, train_labels, test_labels = train_test_split(feat
 numerical_cols = features.select_dtypes(include=["float64", "int64"])
 ct = ColumnTransformer([("Standard Scalar", StandardScaler(), numerical_cols.columns)])
 
-# Scale training features
-scaled_features_train = ct.fit_transform(train_features)
-# Scale testing features
-scaled_features_test = ct.fit_transform(test_features)
+# Fit transformer to training features. Takes mean / std. from training set.
+ct.fit(train_features)
+# Scale training / testing features using mean / std. from training set.
+scaled_features_train = ct.transform(train_features)
+scaled_features_test = ct.transform(test_features)
 
 # Model definition
 model = Sequential()
