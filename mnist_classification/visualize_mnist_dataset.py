@@ -1,4 +1,3 @@
-import tensorflow
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -6,7 +5,7 @@ import matplotlib.pyplot as plt
 import random
 
 # Explore the data
-mnist_data = pd.read_csv("./datasets/train_mnist.csv")
+mnist_data = pd.read_csv("../datasets/train_mnist.csv")
 # print(mnist_data.head())
 # print(mnist_data.info())
 
